@@ -21,7 +21,7 @@ while True:
     timezones = ', '.join(map(str, tz_list,))
 
     # user input
-    selected_time = input("Please choose a timezone: " + timezones + '\n').upper()
+    selected_time = input("Please choose a timezone (or 'quit' to exit): " + timezones + '\n').upper()
 
     # check user input against data
     if selected_time == "QUIT":
@@ -39,11 +39,12 @@ while True:
         local_time = pytz.utc.localize(cur_time).astimezone()
         utc_time = pytz.utc.localize(cur_time).astimezone(pytz.timezone('UTC'))
         input_time = pytz.utc.localize(cur_time).astimezone(selected_tz)
+        time_format = '%Y-%m-%d %H:%M:%S'
         
         print("The time in the {} timezone is: ".format(selected_time) + input_time.strftime(
-            '%Y-%m-%d %H:%M:%S'))
+            time_format))
         print("Your local time is: " + local_time.strftime(
-            '%Y-%m-%d %H:%M:%S'))
+            time_format))
         print("The current UTC time is: " + utc_time.strftime(
-            '%Y-%m-%d %H:%M:%S'))
-        break
+            time_format))
+        print()
