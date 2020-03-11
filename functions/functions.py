@@ -13,10 +13,17 @@ def python_food():
 # the 'parameter' defines the data the function takes
 # if a parameter is referenced with a '*', it represents that the
 # parameter can be multiple arguments entered
-def center_text(text):
-    text = str(text)
+# default values can be set as paremeters
+def center_text(*args, sep=' ', end='\n', file=None, flush=False):
+    text = ""
+    # converts args into text string
+    # the separator is now set as an argument, and is dynamic based on
+    # input into the function by an argument, or defaults to a space
+    for arg in args:
+        text += str(arg) + sep
     left_margin = (80 - len(text) // 2)
-    print(" " * left_margin, text)
+    # text variable is sliced to remove final separator
+    print(" " * left_margin, text[:-1], end=end, file=file, flush=flush)
 
 
 # call the function
@@ -25,3 +32,4 @@ center_text("spam and eggs")
 center_text("spam, spam and eggs")
 center_text(12)
 center_text("spam, spam, spam and spam")
+center_text("first", "second", 3, 4, "spam", sep=":")
