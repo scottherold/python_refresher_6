@@ -16,13 +16,10 @@ def parabola(page, size):
 
 
 # draw circle
-def circle(page, radius, g, h):
-    for x in range(g, g + radius):
-        y = h + (math.sqrt(radius ** 2 - ((x - g) ** 2)))
-        plot(page, x, y)
-        plot(page, x, 2 * h - y)
-        plot(page, 2 * g - x, y)
-        plot(page, 2 * g - x, 2 * h - y)
+# refactored to allow the color of the circle to be specified and
+# defaults to red otherwise
+def circle(page, radius, g, h, color="red"):
+    page.create_oval(g + radius, h + radius, g - radius, h - radius, outline=color, width=2)
 
 
 # draw grid on GUI
