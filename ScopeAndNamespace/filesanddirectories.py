@@ -1,8 +1,12 @@
 # a good use of recursion is obtaining a list of files in a directory
+# The only things that screate scope in Python are: Modules, Functions
+# and Classes
 import os
 
 
 def list_directories(s):
+
+
     # scoped function
     def dir_list(d):
         # creates a properly scoped variable
